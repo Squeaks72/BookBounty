@@ -436,15 +436,20 @@ class DataHandler:
                                 file_type = ".epub"
                             file_type_check = any(ft.replace(".", "").lower() in file_type for ft in self.preferred_extensions_fiction)
                             language_check = language.lower() == self.selected_language.lower() or self.selected_language.lower() == "all"
+                            self.general_logger.info("Lanaguage Check " + language_check)
+                            self.general_logger.info("File Type Check " + file_type_check)
 
                             if file_type_check and language_check:
                                 author_name_match_ratio = self.compare_author_names(author, author_string)
+                                self.general_logger.info("Author Name Match Ratio " + author_name_match_ratio)
                                 book_name_match_ratio = fuzz.ratio(title_string, book_search_text)
+                                self.general_logger.info("Book Name Match Ratio " + book_name_match_ratio)
                                 if author_name_match_ratio >= self.minimum_match_ratio and book_name_match_ratio >= self.minimum_match_ratio:
                                     mirrors = row.find("ul", class_="record_mirrors_compact")
                                     links = mirrors.find_all("a", href=True)
                                     for link in links:
                                         href = link["href"]
+                                        self.general_logger.info("HREF: " + href)
                                         has_blacklisted_string = false
                                         for blacklisted_string in blacklisted_strings:
                                             if blacklisted_string in href:
