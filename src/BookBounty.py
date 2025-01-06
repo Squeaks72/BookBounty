@@ -409,7 +409,8 @@ class DataHandler:
                         rows = table.find_all("tr")
                     else:
                         rows = []
-
+                    self.general_logger.info("Response Text:  " + response.text)
+                    self.general_logger.info("Rows:  " + rows)
                     for row in rows:
                         try:
                             cells = row.find_all("td")

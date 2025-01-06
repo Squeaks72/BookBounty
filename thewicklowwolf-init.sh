@@ -20,10 +20,10 @@ _____________________________________
      __/  -'/  `-._ `\_\__           
     /    /-'`  `\   \  \-.\          
 _____________________________________
-Brought to you by TheWicklowWolf   
+Brought to you by TheWicklowWolf, forked and slightly improved by timsheehan95 
 _____________________________________
 
-If you'd like to buy me a coffee:
+If you'd like to buy him a coffee:
 https://buymeacoffee.com/thewicklow
 
 EOF
