@@ -432,16 +432,16 @@ class DataHandler:
                                 language = cells[3].get_text().strip()
                             except:
                                 language = "english"
-                            self.general_logger.info("Language: " + language)
+                            # self.general_logger.info("Language: " + language)
                             try:
                                 file_type = cells[4].get_text().strip().lower()
                             except:
                                 file_type = ".epub"
-                            self.general_logger.info("File Type: " + file_type)
+                            # self.general_logger.info("File Type: " + file_type)
                             file_type_check = False
                             for preferred_extension in self.preferred_extensions_fiction:
                                 stripped_extension = preferred_extension.lstrip().lstrip(".")
-                                self.general_logger.info("Stripped extension: " + stripped_extension)
+                                # self.general_logger.info("Stripped extension: " + stripped_extension)
                                 if stripped_extension in file_type:
                                     file_type_check = True
                             language_check = False
