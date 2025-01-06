@@ -86,11 +86,11 @@ class DataHandler:
         self.selected_path_type = os.environ.get("selected_path_type", "")
         self.search_type = os.environ.get("search_type", "")
         library_scan_on_completion = os.environ.get("library_scan_on_completion", "")
-        self.library_scan_on_completion = library_scan_on_completion.lower() == "true" if library_scan_on_completion != "" else ""
+        self.library_scan_on_completion = library_scan_on_completion.lower() == "True" if library_scan_on_completion != "" else ""
         search_last_name_only = os.environ.get("search_last_name_only", "")
-        self.search_last_name_only = search_last_name_only.lower() == "true" if search_last_name_only != "" else ""
+        self.search_last_name_only = search_last_name_only.lower() == "True" if search_last_name_only != "" else ""
         search_shortened_title = os.environ.get("search_shortened_title", "")
-        self.search_shortened_title = search_shortened_title.lower() == "true" if search_shortened_title != "" else ""
+        self.search_shortened_title = search_shortened_title.lower() == "True" if search_shortened_title != "" else ""
         request_timeout = os.environ.get("request_timeout", "")
         self.request_timeout = float(request_timeout) if request_timeout else ""
         thread_limit = os.environ.get("thread_limit", "")
@@ -438,18 +438,18 @@ class DataHandler:
                             except:
                                 file_type = ".epub"
                             self.general_logger.info("File Type: " + file_type)
-                            file_type_check = false
-                            for preferred_extension in preferred_extensions_fiction:
+                            file_type_check = False
+                            for preferred_extension in self.preferred_extensions_fiction:
                                 stripped_extension = preferred_extension.lstrip().lstrip(".")
                                 self.general_logger.info("Stripped extension: " + stripped_extension)
                                 if stripped_extension in file_type:
-                                    file_type_check = true
+                                    file_type_check = True
                                     break
                             self.general_logger.info("File type check: " + file_type_check)
                             language_check = language.lower() == self.selected_language.lower() or self.selected_language.lower() == "all"
                             self.general_logger.info("Language check: " + language_check)
 
-                            if true and language_check:
+                            if True and language_check:
                                 author_name_match_ratio = self.compare_author_names(author, author_string)
                                 self.general_logger.info("Author Name Match Ratio " + author_name_match_ratio)
                                 book_name_match_ratio = fuzz.ratio(title_string, book_search_text)
@@ -460,10 +460,10 @@ class DataHandler:
                                     for link in links:
                                         href = link["href"]
                                         self.general_logger.info("HREF: " + href)
-                                        has_blacklisted_string = false
+                                        has_blacklisted_string = False
                                         for blacklisted_string in blacklisted_strings:
                                             if blacklisted_string in href:
-                                                has_blacklisted_string = true
+                                                has_blacklisted_string = True
                                         if has_blacklisted_string:
                                             continue
                                         if href.startswith("http://") or href.startswith("https://"):
@@ -537,10 +537,10 @@ class DataHandler:
                                 download_link = row.find("a")
                                 if download_link:
                                     link_text = download_link.get("href")
-                                    has_blacklisted_string = false
+                                    has_blacklisted_string = False
                                     for blacklisted_string in self.blacklisted_strings:
                                         if blacklisted_string in link_text:
-                                            has_blacklisted_string = true
+                                            has_blacklisted_string = True
                                             self.general_logger.info("blacklisted string {" + blacklisted_string + "} found, skipping that download link...")
                                             break
                                     if has_blacklisted_string:
