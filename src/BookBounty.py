@@ -445,6 +445,12 @@ class DataHandler:
                                     links = mirrors.find_all("a", href=True)
                                     for link in links:
                                         href = link["href"]
+                                        has_blacklisted_string = false
+                                        for blacklisted_string in blacklisted_strings:
+                                            if blacklisted_string in href:
+                                                has_blacklisted_string = true
+                                        if has_blacklisted_string:
+                                            continue
                                         if href.startswith("http://") or href.startswith("https://"):
                                             found_links.append(href)
                         except:
