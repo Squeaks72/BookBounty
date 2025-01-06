@@ -438,10 +438,12 @@ class DataHandler:
                             except:
                                 file_type = ".epub"
                             self.general_logger.info("File Type: " + file_type)
-                            file_type_check = any(ft.replace(".", "").lower() in file_type for ft in self.preferred_extensions_fiction)
+                            file_type_check = false
+                            for preferred_extension in preferred_extensions_fiction:
+                                stripped_extension = preferred_extension.lstrip().lstrip(".")
+                                if stripped_extension in file_type:
+                                    file_type_check = true
                             language_check = language.lower() == self.selected_language.lower() or self.selected_language.lower() == "all"
-                            self.general_logger.info("Lanaguage Check " + language_check)
-                            self.general_logger.info("File Type Check " + file_type_check)
 
                             if file_type_check and language_check:
                                 author_name_match_ratio = self.compare_author_names(author, author_string)
