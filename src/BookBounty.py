@@ -70,6 +70,7 @@ class DataHandler:
             "preferred_extensions_non_fiction": [".pdf", ".epub", ".mobi", ".azw3", ".djvu"],
             "search_last_name_only": False,
             "search_shortened_title": False,
+            "blacklisted_strings": ""
         }
 
         # Load settings from environmental variables (which take precedence) over the configuration file.
@@ -150,6 +151,7 @@ class DataHandler:
                         "preferred_extensions_non_fiction": self.preferred_extensions_non_fiction,
                         "search_last_name_only": self.search_last_name_only,
                         "search_shortened_title": self.search_shortened_title,
+                        "blacklisted_strings": self.blacklisted_strings
                     },
                     json_file,
                     indent=4,
@@ -704,6 +706,7 @@ class DataHandler:
             self.sleep_interval = float(data["sleep_interval"])
             self.sync_schedule = self.parse_sync_schedule(data["sync_schedule"])
             self.minimum_match_ratio = float(data["minimum_match_ratio"])
+            self.blacklisted_strings = data["blacklisted_strings"]
 
         except Exception as e:
             self.general_logger.error(f"Failed to update settings: {str(e)}")
@@ -732,6 +735,7 @@ class DataHandler:
             "sleep_interval": self.sleep_interval,
             "sync_schedule": self.sync_schedule,
             "minimum_match_ratio": self.minimum_match_ratio,
+            "blacklisted_strings": self.blacklisted_strings
         }
         socketio.emit("settings_loaded", data)
 
