@@ -400,6 +400,7 @@ class DataHandler:
             else:
                 search_item = query_text.replace(" ", "+")
                 url = f"{self.libgen_address}/fiction/?q={search_item}"
+                self.general_logger.info("Search URL: " + url)
                 response = requests.get(url, timeout=self.request_timeout)
                 if response.status_code == 200:
                     soup = BeautifulSoup(response.text, "html.parser")
