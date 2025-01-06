@@ -441,11 +441,15 @@ class DataHandler:
                             file_type_check = false
                             for preferred_extension in preferred_extensions_fiction:
                                 stripped_extension = preferred_extension.lstrip().lstrip(".")
+                                self.general_logger.info("Stripped extension: " + stripped_extension)
                                 if stripped_extension in file_type:
                                     file_type_check = true
+                                    break
+                            self.general_logger.info("File type check: " + file_type_check)
                             language_check = language.lower() == self.selected_language.lower() or self.selected_language.lower() == "all"
+                            self.general_logger.info("Language check: " + language_check)
 
-                            if file_type_check and language_check:
+                            if true and language_check:
                                 author_name_match_ratio = self.compare_author_names(author, author_string)
                                 self.general_logger.info("Author Name Match Ratio " + author_name_match_ratio)
                                 book_name_match_ratio = fuzz.ratio(title_string, book_search_text)
