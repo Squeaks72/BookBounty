@@ -452,9 +452,9 @@ class DataHandler:
 
                             if file_type_check and language_check:
                                 author_name_match_ratio = self.compare_author_names(author, author_string)
-                                self.general_logger.info("Author Name Match Ratio " + author_name_match_ratio)
+                                self.general_logger.info("Author Name Match Ratio " + str(author_name_match_ratio))
                                 book_name_match_ratio = fuzz.ratio(title_string, book_search_text)
-                                self.general_logger.info("Book Name Match Ratio " + book_name_match_ratio)
+                                self.general_logger.info("Book Name Match Ratio " + str(book_name_match_ratio))
                                 if author_name_match_ratio >= self.minimum_match_ratio and book_name_match_ratio >= self.minimum_match_ratio:
                                     mirrors = row.find("ul", class_="record_mirrors_compact")
                                     links = mirrors.find_all("a", href=True)
@@ -470,8 +470,8 @@ class DataHandler:
                                         if href.startswith("http://") or href.startswith("https://"):
                                             found_links.append(href)
                         except Exception as e:
-                            self.general_logger.error(f"Error Searching libgen: {str(e)}")
-                            raise Exception(f"Error Searching libgen: {str(e)}")
+                            self.general_logger.error(f"Error Reading libgen search page: {str(e)}")
+                            raise Exception(f"Error Reading libgen search page: {str(e)}")
 
                     if not found_links:
                         req_item["status"] = "No Link Found"
