@@ -462,7 +462,7 @@ class DataHandler:
                                         href = link["href"]
                                         self.general_logger.info("HREF: " + href)
                                         has_blacklisted_string = False
-                                        for blacklisted_string in blacklisted_strings:
+                                        for blacklisted_string in self.blacklisted_strings:
                                             if blacklisted_string in href:
                                                 has_blacklisted_string = True
                                         if has_blacklisted_string:
