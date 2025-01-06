@@ -14,7 +14,7 @@ BookBounty is a tool for finding missing Readarr books.
 ```yaml
 services:
   bookbounty:
-    image: thewicklowwolf/bookbounty:latest
+    image: timsheehan95/bookbounty:latest
     container_name: bookbounty
     ports:
       - 5000:5000
@@ -49,6 +49,7 @@ Certain values can be set via environment variables:
 * __preferred_extensions_non_fiction__: Filter non-fiction download by extension (comma separated). Defaults to `.pdf .epub, .mobi, .azw3, .djvu`.
 * __search_last_name_only__: Use only the author's last name in searches. Defaults to `False`.
 * __search_shortened_title__: Use shortened title when searching (remove everything after `:`). Defaults to `False`.
+* __blacklisted_strings__: Comma separated list of strings to look out for and ignore in download links. Useful when you want to ignore certain download sites. Defaults to ``.
 
 
 ## Sync Schedule
