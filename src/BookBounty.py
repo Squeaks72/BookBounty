@@ -100,8 +100,8 @@ class DataHandler:
         self.preferred_extensions_fiction = preferred_extensions_fiction.split(",") if preferred_extensions_fiction else ""
         preferred_extensions_non_fiction = os.environ.get("preferred_extensions_non_fiction", "")
         self.preferred_extensions_non_fiction = preferred_extensions_non_fiction.split(",") if preferred_extensions_non_fiction else ""
-        backlisted_strings = os.environ.get("blacklisted_strings", "")
-        self.backlisted_strings = backlisted_strings.split(",") if backlisted_strings else ""
+        blacklisted_strings = os.environ.get("blacklisted_strings", "")
+        self.blacklisted_strings = blacklisted_strings.split(",") if blacklisted_strings else ""
 
         # Load variables from the configuration file if not set by environmental variables.
         try:
@@ -517,7 +517,7 @@ class DataHandler:
                                 if download_link:
                                     link_text = download_link.get("href")
                                     has_blacklisted_string = false
-                                    for backlisted_string in self.backlisted_strings:
+                                    for blacklisted_string in self.blacklisted_strings:
                                         if blacklisted_string in link_text:
                                             has_blacklisted_string = true
                                             self.general_logger.info("blacklisted string {" + blacklisted_string + "} found, skipping that download link...")
