@@ -409,8 +409,6 @@ class DataHandler:
                         rows = table.find_all("tr")
                     else:
                         rows = []
-                    self.general_logger.info("Response Text:  " + response.text)
-                    self.general_logger.info("Rows:  " + rows)
                     for row in rows:
                         try:
                             cells = row.find_all("td")
@@ -418,6 +416,7 @@ class DataHandler:
                                 author_string = cells[0].get_text().strip()
                             except:
                                 author_string = ""
+                            self.general_logger.info("Author String: " + author_string)
                             try:
                                 raw_title = cells[2].get_text().strip()
                                 if "\nISBN" in raw_title:
@@ -428,14 +427,17 @@ class DataHandler:
                                     title_string = raw_title
                             except:
                                 title_string = ""
+                            self.general_logger.info("Title String: " + title_string)
                             try:
                                 language = cells[3].get_text().strip()
                             except:
                                 language = "english"
+                            self.general_logger.info("Language: " + language)
                             try:
                                 file_type = cells[4].get_text().strip().lower()
                             except:
                                 file_type = ".epub"
+                            self.general_logger.info("File Type: " + file_type)
                             file_type_check = any(ft.replace(".", "").lower() in file_type for ft in self.preferred_extensions_fiction)
                             language_check = language.lower() == self.selected_language.lower() or self.selected_language.lower() == "all"
                             self.general_logger.info("Lanaguage Check " + language_check)
