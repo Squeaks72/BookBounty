@@ -20,7 +20,7 @@ _____________________________________
      __/  -'/  `-._ `\_\__           
     /    /-'`  `\   \  \-.\          
 _____________________________________
-Brought to you by TheWicklowWolf, forked and slightly improved by timsheehan95 
+Brought to you by TheWicklowWolf, forked and slightly improved by Squeaks72 
 _____________________________________
 
 If you'd like to buy him a coffee:

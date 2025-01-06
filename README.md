@@ -14,7 +14,7 @@ BookBounty is a tool for finding missing Readarr books.
 ```yaml
 services:
   bookbounty:
-    image: timsheehan95/bookbounty:latest
+    image: squeaks72/bookbounty:latest
     container_name: bookbounty
     ports:
       - 5000:5000
