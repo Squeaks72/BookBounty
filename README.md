@@ -88,5 +88,5 @@ For both methods, setting `library_scan_on_completion=True` automates the import
 
 ---
 
-https://hub.docker.com/r/thewicklowwolf/bookbounty
+https://hub.docker.com/r/squeaks72/bookbounty
 
